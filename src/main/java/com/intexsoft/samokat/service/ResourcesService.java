@@ -9,11 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ResourcesService {
+    public static final JsonObject TESTDATA;
+    public static final JsonObject CONFIG;
     private static final Path TESTDATA_PATH = Path.of("src/test/resources/testdata.json");
     private static final Path CONFIG_PATH = Path.of("src/test/resources/config.json");
-    private static final JsonObject TESTDATA;
-    private static final JsonObject CONFIG;
-
 
     static {
         try {
