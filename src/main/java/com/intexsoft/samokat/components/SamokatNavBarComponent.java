@@ -1,7 +1,9 @@
 package com.intexsoft.samokat.components;
 
 import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
+import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
 import com.intexsoft.samokat.pages.yandex.YandexPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,5 +36,17 @@ public class SamokatNavBarComponent {
     public YandexPage clickYandexLink() {
         yandexLink.click();
         return new YandexPage(driver);
+    }
+
+    public SamokatNavBarComponent clickOrderStatusButton() {
+        orderStatusButton.click();
+        return this;
+    }
+
+    public OrderStatusPage goToOrderByNumber(String orderNumber) {
+        clickOrderStatusButton();
+        driver.findElement(By.cssSelector("input[placeholder=\"Введите номер заказа\"]")).sendKeys(orderNumber);
+        driver.findElement(By.ById.xpath("//button[text()=\"Go!\"]")).click();
+        return new OrderStatusPage(driver);
     }
 }

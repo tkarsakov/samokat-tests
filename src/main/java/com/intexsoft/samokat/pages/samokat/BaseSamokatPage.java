@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BaseSamokatPage {
 
-    private final WebDriver driver;
+    protected final WebDriver driver;
 
     protected SamokatNavBarComponent samokatNavBarComponent;
 
