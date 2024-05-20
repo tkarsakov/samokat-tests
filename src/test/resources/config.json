@@ -1,4 +1,5 @@
 {
   "browserName": "chrome",
-  "selenium_url": "http://localhost:4444/wd/hub"
+  "selenium_url": "http://localhost:4444/wd/hub",
+  "url": "https://qa-scooter.praktikum-services.ru/"
 }

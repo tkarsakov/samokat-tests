@@ -16,7 +16,7 @@ public class ResourcesService {
 
     static {
         try {
-            TESTDATA = new Gson().fromJson(Files.readString(TESTDATA_PATH, StandardCharsets.UTF_8), JsonObject.class);
+            TESTDATA = new Gson().fromJson(Files.readString(TESTDATA_PATH), JsonObject.class);
         } catch (IOException e) {
             throw new RuntimeException(String.format("Cannot find testdata.json at %s", TESTDATA_PATH));
         }
@@ -24,7 +24,7 @@ public class ResourcesService {
 
     static {
         try {
-            CONFIG = new Gson().fromJson(Files.readString(CONFIG_PATH, StandardCharsets.UTF_8), JsonObject.class);
+            CONFIG = new Gson().fromJson(Files.readString(CONFIG_PATH), JsonObject.class);
         } catch (IOException e) {
             throw new RuntimeException(String.format("Cannot find config.json at %s", CONFIG_PATH));
         }
