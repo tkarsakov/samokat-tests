@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -29,5 +28,10 @@ public class ResourcesService {
             throw new RuntimeException(String.format("Cannot find config.json at %s", CONFIG_PATH));
         }
 
+    }
+
+    //Have to do this to remove quotes from JSON strings which gson preserves for some reason
+    public static String getStringFromJsonObject(JsonObject jsonObject, String key) {
+        return jsonObject.get(key).toString().replace("\"", "");
     }
 }

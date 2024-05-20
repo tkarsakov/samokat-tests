@@ -44,6 +44,7 @@ public abstract class BaseTest {
         }
 
         driver = new RemoteWebDriver(selenium_url, capabilities);
+        driver.get(ResourcesService.CONFIG.get("url").toString().replace("\"", ""));
     }
 
     @After

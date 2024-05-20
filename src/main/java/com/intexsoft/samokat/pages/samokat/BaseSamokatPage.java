@@ -13,16 +13,22 @@ public abstract class BaseSamokatPage {
 
     public BaseSamokatPage(WebDriver driver) {
         this.driver = driver;
+        this.samokatNavBarComponent = new SamokatNavBarComponent(driver);
     }
 
-    protected MainSamokatPage clickOnSamokatMainPageLink() {
+    public MainSamokatPage clickOnSamokatMainPageLink() {
         samokatNavBarComponent.clickMainPageLink();
         return new MainSamokatPage(driver);
     }
 
-    protected YandexPage clickOnYandexLink() {
+    public YandexPage clickOnYandexLink() {
         samokatNavBarComponent.clickYandexLink();
         return new YandexPage(driver);
+    }
+
+    public OrderPage clickOrderButton() {
+        samokatNavBarComponent.clickOrderButton();
+        return new OrderPage(driver);
     }
 
     public void init(WebDriver driver) {

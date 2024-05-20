@@ -12,7 +12,6 @@ public class MainPageTests extends BaseTest {
 
     @Test
     public void testFaqElementExpectSuccess() {
-        driver.get(ResourcesService.CONFIG.get("url").toString().replace("\"", ""));
         MainSamokatPage mainPage = new MainSamokatPage(driver);
         mainPage.clickCookieConfirmButton();
         List<JsonElement> faqList = ResourcesService.TESTDATA.getAsJsonArray("faq").asList();
