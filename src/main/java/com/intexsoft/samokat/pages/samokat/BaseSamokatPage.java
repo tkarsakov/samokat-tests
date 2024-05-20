@@ -3,6 +3,7 @@ package com.intexsoft.samokat.pages.samokat;
 import com.intexsoft.samokat.components.SamokatNavBarComponent;
 import com.intexsoft.samokat.pages.yandex.YandexPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class BaseSamokatPage {
 
@@ -22,5 +23,9 @@ public abstract class BaseSamokatPage {
     protected YandexPage clickOnYandexLink() {
         samokatNavBarComponent.clickYandexLink();
         return new YandexPage(driver);
+    }
+
+    public void init(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 }

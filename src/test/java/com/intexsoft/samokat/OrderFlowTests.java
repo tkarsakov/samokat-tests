@@ -1,4 +1,11 @@
 package com.intexsoft.samokat;
 
-public class OrderFlowTests {
+import org.junit.Test;
+
+public class OrderFlowTests extends BaseTest {
+
+    @Test
+    public void testOrderFlowExpectSuccess() {
+        
+    }
 }

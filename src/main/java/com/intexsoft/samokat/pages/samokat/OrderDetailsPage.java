@@ -24,6 +24,7 @@ public class OrderDetailsPage extends BaseSamokatPage {
 
     public OrderDetailsPage(WebDriver driver) {
         super(driver);
+        this.init(driver);
     }
 
     public OrderDetailsPage clickScooterColorCheckboxByColor(String scooterColor) {

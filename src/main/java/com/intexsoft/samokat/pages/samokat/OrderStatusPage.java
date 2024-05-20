@@ -11,6 +11,7 @@ public class OrderStatusPage extends BaseSamokatPage {
 
     public OrderStatusPage(WebDriver driver) {
         super(driver);
+        this.init(driver);
     }
 
     public Boolean isOrderFound() {

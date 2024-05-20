@@ -26,6 +26,7 @@ public class OrderPage extends BaseSamokatPage {
 
     public OrderPage(WebDriver driver) {
         super(driver);
+        this.init(driver);
     }
 
     public OrderPage typeName(String name) {
