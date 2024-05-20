@@ -2,28 +2,18 @@ package com.intexsoft.samokat.pages.samokat;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class MainSamokatPage extends BaseSamokatPage {
 
-    @FindBy(css = "div.accordion__button")
-    private List<WebElement> faqList;
-
-
+    private final String FAQ_LIST_XPATH = "//div[@id=\"accordion__heading-%d\"]";
+    private final String ANSWER_XPATH = "//div[@id=\"accordion__panel-%d\"]/p";
 
     public MainSamokatPage(WebDriver driver) {
         super(driver);
     }
 
-    public List<WebElement> getFaqList() {
-        return faqList;
-    }
-
     public String getAnswerStringByIndex(Integer index) {
-        faqList.get(index).click();
-        return driver.findElement(By.cssSelector(String.format("#accordion__panel-%d p", index))).getText();
+        driver.findElement(By.xpath(String.format(FAQ_LIST_XPATH, index)));
+        return driver.findElement(By.xpath(String.format(ANSWER_XPATH, index))).getAttribute("innerHTML");
     }
 }

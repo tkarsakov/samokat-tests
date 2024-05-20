@@ -24,7 +24,7 @@ public class MainPageTests {
     @Before
     public void setUp() {
         URL selenium_url;
-        String uri = ResourcesService.CONFIG.get("selenium_url").toString().trim();
+        String uri = ResourcesService.CONFIG.get("selenium_url").toString().replace("\"", "");
         try {
             selenium_url = new URI(uri).toURL();
         } catch (MalformedURLException e) {
@@ -33,7 +33,7 @@ public class MainPageTests {
             throw new RuntimeException(e);
         }
 
-        String browserName = ResourcesService.CONFIG.get("browserName").toString();
+        String browserName = ResourcesService.CONFIG.get("browserName").toString().replace("\"", "");
         Capabilities capabilities;
         switch (browserName) {
             case "chrome":
@@ -51,13 +51,13 @@ public class MainPageTests {
 
     @Test
     public void testFaqElementExpectSuccess() {
-        driver.get(ResourcesService.CONFIG.get("url").toString());
+        driver.get(ResourcesService.CONFIG.get("url").toString().replace("\"", ""));
         MainSamokatPage mainPage = new MainSamokatPage(driver);
         List<JsonElement> faqList = ResourcesService.TESTDATA.getAsJsonArray("faq").asList();
 
         for (int i = 0; i < faqList.size(); i++) {
             String answerOnPage = mainPage.getAnswerStringByIndex(i);
-            String answerFromTestdata = faqList.get(i).toString();
+            String answerFromTestdata = faqList.get(i).toString().replace("\"", "");
             Assert.assertEquals(answerOnPage, answerFromTestdata);
         }
     }
