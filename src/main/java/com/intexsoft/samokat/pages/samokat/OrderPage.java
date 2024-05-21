@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class OrderPage extends BaseSamokatPage {
 
+    private final String SUBWAY_SELECT_DROPDOWN_FORMATTABLE_XPATH = "//div[text()=\"%s\"]";
     @FindBy(css = "input[placeholder=\"* Имя\"]")
     private WebElement nameInput;
     @FindBy(css = "input[placeholder=\"* Фамилия\"]")
@@ -42,7 +43,7 @@ public class OrderPage extends BaseSamokatPage {
 
     public OrderPage selectSubway(String subway) {
         subwayInput.click();
-        driver.findElement(By.xpath(String.format("//div[text()=\"%s\"]", subway))).click();
+        driver.findElement(By.xpath(String.format(SUBWAY_SELECT_DROPDOWN_FORMATTABLE_XPATH, subway))).click();
         return this;
     }
 

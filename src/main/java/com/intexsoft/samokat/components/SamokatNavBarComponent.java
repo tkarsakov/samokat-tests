@@ -3,7 +3,7 @@ package com.intexsoft.samokat.components;
 import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
 import com.intexsoft.samokat.pages.samokat.OrderPage;
 import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
-import com.intexsoft.samokat.pages.yandex.YandexPage;
+import com.intexsoft.samokat.pages.yandex.DzenPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,6 +26,12 @@ public class SamokatNavBarComponent {
     @FindBy(css = "button.Header_Link__1TAG7")
     private WebElement orderStatusButton;
 
+    @FindBy(css = "input.Header_Input__xIoUq")
+    private WebElement orderNumberInput;
+
+    @FindBy(css = "button.Header_Button__28dPO")
+    private WebElement goToOrderButton;
+
     public SamokatNavBarComponent(WebDriver driver) {
         this.driver = driver;
         this.init(driver);
@@ -36,9 +42,9 @@ public class SamokatNavBarComponent {
         return new MainSamokatPage(driver);
     }
 
-    public YandexPage clickYandexLink() {
+    public DzenPage clickYandexLink() {
         yandexLink.click();
-        return new YandexPage(driver);
+        return new DzenPage(driver);
     }
 
     public OrderPage clickOrderButton() {
@@ -53,7 +59,7 @@ public class SamokatNavBarComponent {
 
     public OrderStatusPage goToOrderByNumber(String orderNumber) {
         clickOrderStatusButton();
-        driver.findElement(By.cssSelector("input[placeholder=\"Введите номер заказа\"]")).sendKeys(orderNumber);
+        orderNumberInput.sendKeys(orderNumber);
         driver.findElement(By.ById.xpath("//button[text()=\"Go!\"]")).click();
         return new OrderStatusPage(driver);
     }

@@ -52,7 +52,7 @@ public abstract class BaseTest {
     }
 
     @After
-    public void teardown() {
+    public void tearDown() {
         driver.quit();
     }
 }
