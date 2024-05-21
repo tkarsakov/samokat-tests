@@ -20,10 +20,19 @@ public class OrderPage extends BaseSamokatPage {
     private WebElement phoneNumberInput;
     @FindBy(css = "div.Order_NextButton__1_rCA button")
     private WebElement nextButton;
+    @FindBy(xpath = "//div[text()=\"Введите корректное имя\"]")
+    private WebElement incorrectNameError;
+    @FindBy(xpath = "//div[text()=\"Введите корректную фамилию\"]")
+    private WebElement incorrectSurnameError;
+    @FindBy(xpath = "//div[text()=\"Введите корректный адрес\"]")
+    private WebElement incorrectAddressError;
+    @FindBy(xpath = "//div[text()=\"Введите корректный номер\"]")
+    private WebElement incorrectPhoneNumberError;
+    @FindBy(css = "div.Order_Header__BZXOb")
+    private WebElement orderHeader;
 
     public OrderPage(WebDriver driver) {
         super(driver);
-        this.init(driver);
     }
 
     public OrderPage typeName(String name) {
@@ -55,5 +64,25 @@ public class OrderPage extends BaseSamokatPage {
     public OrderDetailsPage clickNextButton() {
         nextButton.click();
         return new OrderDetailsPage(driver);
+    }
+
+    public Boolean isNameErrorPresent() {
+        orderHeader.click();
+        return incorrectNameError.isDisplayed();
+    }
+
+    public Boolean isSurnameErrorPresent() {
+        orderHeader.click();
+        return incorrectSurnameError.isDisplayed();
+    }
+
+    public Boolean isAddressErrorPresent() {
+        orderHeader.click();
+        return incorrectAddressError.isDisplayed();
+    }
+
+    public Boolean isPhoneNumberErrorPresent() {
+        orderHeader.click();
+        return incorrectPhoneNumberError.isDisplayed();
     }
 }

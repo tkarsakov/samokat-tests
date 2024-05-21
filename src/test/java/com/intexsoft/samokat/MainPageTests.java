@@ -2,6 +2,7 @@ package com.intexsoft.samokat;
 
 import com.google.gson.JsonElement;
 import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
+import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
 import com.intexsoft.samokat.pages.yandex.DzenPage;
 import com.intexsoft.samokat.service.ResourcesService;
 import org.junit.Assert;
@@ -48,5 +49,15 @@ public class MainPageTests extends BaseTest {
             }
         }
         Assert.assertTrue(dzenPage.isPageOpen());
+    }
+
+    @Test
+    public void testIncorrectOrderNumber() {
+        MainSamokatPage mainPage = new MainSamokatPage(driver);
+        String incorrectOrderNumber = ResourcesService.TESTDATA.get("incorrectOrderNumber").toString().replace("\"", "");
+
+        OrderStatusPage orderStatusPage = mainPage.goToOrderByNumber(incorrectOrderNumber);
+        Assert.assertTrue(orderStatusPage.isPageOpen());
+        Assert.assertFalse(orderStatusPage.isOrderFound());
     }
 }

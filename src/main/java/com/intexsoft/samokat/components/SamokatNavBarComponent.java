@@ -4,11 +4,14 @@ import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
 import com.intexsoft.samokat.pages.samokat.OrderPage;
 import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
 import com.intexsoft.samokat.pages.yandex.DzenPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SamokatNavBarComponent {
 
@@ -59,8 +62,9 @@ public class SamokatNavBarComponent {
 
     public OrderStatusPage goToOrderByNumber(String orderNumber) {
         clickOrderStatusButton();
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(orderNumberInput));
         orderNumberInput.sendKeys(orderNumber);
-        driver.findElement(By.ById.xpath("//button[text()=\"Go!\"]")).click();
+        goToOrderButton.click();
         return new OrderStatusPage(driver);
     }
 

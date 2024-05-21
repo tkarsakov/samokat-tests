@@ -14,6 +14,7 @@ public abstract class BaseSamokatPage {
     public BaseSamokatPage(WebDriver driver) {
         this.driver = driver;
         this.samokatNavBarComponent = new SamokatNavBarComponent(driver);
+        this.init(driver);
     }
 
     public MainSamokatPage clickOnSamokatMainPageLink() {
@@ -33,5 +34,9 @@ public abstract class BaseSamokatPage {
 
     public void init(WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    public OrderStatusPage goToOrderByNumber(String number) {
+        return samokatNavBarComponent.goToOrderByNumber(number);
     }
 }

@@ -14,7 +14,6 @@ public class MainSamokatPage extends BaseSamokatPage {
 
     public MainSamokatPage(WebDriver driver) {
         super(driver);
-        this.init(driver);
     }
 
     public MainSamokatPage clickCookieConfirmButton() {
