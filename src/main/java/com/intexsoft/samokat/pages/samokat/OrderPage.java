@@ -40,9 +40,9 @@ public class OrderPage extends BaseSamokatPage {
         return this;
     }
 
-    public OrderPage typeAndSelectSubway(String subway) {
+    public OrderPage selectSubway(String subway) {
         subwayInput.click();
-        driver.findElement(By.xpath("//div[text()=\"Кропоткинская\"]")).click();
+        driver.findElement(By.xpath(String.format("//div[text()=\"%s\"]", subway))).click();
         return this;
     }
 

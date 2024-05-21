@@ -7,8 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainSamokatPage extends BaseSamokatPage {
 
-    private final String FAQ_LIST_XPATH = "(//div[@class=\"accordion__heading\"])[%d]";
-    private final String ANSWER_XPATH = "//div[@id=\"accordion__panel-%d\"]/p";
+    private final String FAQ_LIST_FORMATTABLE_XPATH = "(//div[@class=\"accordion__heading\"])[%d]";
+    private final String ANSWER_FORMATTABLE_XPATH = "//div[@id=\"accordion__panel-%d\"]/p";
     @FindBy(id = "rcc-confirm-button")
     private WebElement cookieConfirmButton;
 
@@ -24,8 +24,8 @@ public class MainSamokatPage extends BaseSamokatPage {
 
     public String getAnswerStringByIndex(Integer index) {
         //Add 1 because xpath element lists are not zero indexed
-        driver.findElement(By.xpath(String.format(FAQ_LIST_XPATH, index + 1))).click();
-        return driver.findElement(By.xpath(String.format(ANSWER_XPATH, index))).getAttribute("innerHTML");
+        driver.findElement(By.xpath(String.format(FAQ_LIST_FORMATTABLE_XPATH, index + 1))).click();
+        return driver.findElement(By.xpath(String.format(ANSWER_FORMATTABLE_XPATH, index))).getAttribute("innerHTML");
     }
 
 }

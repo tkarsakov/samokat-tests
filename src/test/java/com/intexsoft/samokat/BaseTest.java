@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -38,6 +39,9 @@ public abstract class BaseTest {
                 break;
             case "firefox":
                 capabilities = new FirefoxOptions();
+                break;
+            case "edge":
+                capabilities = new EdgeOptions();
                 break;
             default:
                 throw new RuntimeException("Browser support not implemented or browserName specified incorrectly");
