@@ -9,6 +9,7 @@ public class MainSamokatPage extends BaseSamokatPage {
 
     private final String FAQ_LIST_FORMATTABLE_XPATH = "(//div[@class=\"accordion__heading\"])[%d]";
     private final String ANSWER_FORMATTABLE_XPATH = "//div[@id=\"accordion__panel-%d\"]/p";
+
     @FindBy(id = "rcc-confirm-button")
     private WebElement cookieConfirmButton;
 

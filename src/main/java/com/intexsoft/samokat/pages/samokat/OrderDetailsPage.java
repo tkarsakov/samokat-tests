@@ -8,16 +8,22 @@ import org.openqa.selenium.support.FindBy;
 public class OrderDetailsPage extends BaseSamokatPage {
 
     private final String SELECTED_TERM_FORMATTABLE_XPATH = "//div[text()=\"%s\"]";
+
     @FindBy(css = "input[placeholder=\"* Когда привезти самокат\"]")
     private WebElement dateInput;
+
     @FindBy(css = "div.Dropdown-root")
     private WebElement termSelectDiv;
+
     @FindBy(xpath = "//div[@class=\"Order_Buttons__1xGrp\"]/button[text()=\"Заказать\"]")
     private WebElement orderButton;
+
     @FindBy(xpath = "//div[@class=\"Order_Buttons__1xGrp\"]/button[text()=\"Да\"]")
     private WebElement confirmOrderButton;
+
     @FindBy(xpath = "//div[text()=\"Заказ оформлен\"]")
     private WebElement orderConfirmedDiv;
+
     @FindBy(css = "div.react-datepicker__day--selected")
     private WebElement selectedDate;
 

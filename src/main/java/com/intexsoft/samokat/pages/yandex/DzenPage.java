@@ -13,6 +13,7 @@ import java.util.Objects;
 public class DzenPage {
 
     private final WebDriver driver;
+
     @FindBy(xpath = "//title[text()=\"Дзен\"]")
     private WebElement dzenTitle;
 
