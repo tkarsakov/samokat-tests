@@ -6,10 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainSamokatPage extends BaseSamokatPage {
-
+    //Formattable string for accessing FAQ block on the main page
     private final String FAQ_LIST_FORMATTABLE_XPATH = "(//div[@class=\"accordion__heading\"])[%d]";
+    //And one for answers
     private final String ANSWER_FORMATTABLE_XPATH = "//div[@id=\"accordion__panel-%d\"]/p";
 
+    //Button to confirm cookies
     @FindBy(id = "rcc-confirm-button")
     private WebElement cookieConfirmButton;
 

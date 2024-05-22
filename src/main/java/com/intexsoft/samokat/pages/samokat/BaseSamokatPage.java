@@ -1,7 +1,6 @@
 package com.intexsoft.samokat.pages.samokat;
 
 import com.intexsoft.samokat.components.SamokatNavBarComponent;
-import com.intexsoft.samokat.pages.yandex.DzenPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -9,7 +8,7 @@ public abstract class BaseSamokatPage {
 
     protected final WebDriver driver;
 
-    protected SamokatNavBarComponent samokatNavBarComponent;
+    private SamokatNavBarComponent samokatNavBarComponent;
 
     public BaseSamokatPage(WebDriver driver) {
         this.driver = driver;
@@ -17,19 +16,8 @@ public abstract class BaseSamokatPage {
         this.init(driver);
     }
 
-    public MainSamokatPage clickOnSamokatMainPageLink() {
-        samokatNavBarComponent.clickMainPageLink();
-        return new MainSamokatPage(driver);
-    }
-
-    public DzenPage clickOnYandexLink() {
-        samokatNavBarComponent.clickYandexLink();
-        return new DzenPage(driver);
-    }
-
-    public OrderPage clickOrderButton() {
-        samokatNavBarComponent.clickOrderButton();
-        return new OrderPage(driver);
+    public SamokatNavBarComponent getSamokatNavBarComponent() {
+        return samokatNavBarComponent;
     }
 
     public void init(WebDriver driver) {

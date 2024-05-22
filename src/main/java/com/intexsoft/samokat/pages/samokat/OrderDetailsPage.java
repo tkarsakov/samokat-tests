@@ -6,24 +6,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class OrderDetailsPage extends BaseSamokatPage {
-
+    //Formattable string for locating term options
     private final String SELECTED_TERM_FORMATTABLE_XPATH = "//div[text()=\"%s\"]";
-
+    //Order form date input
     @FindBy(css = "input[placeholder=\"* Когда привезти самокат\"]")
     private WebElement dateInput;
-
+    //Order form term select div
     @FindBy(css = "div.Dropdown-root")
     private WebElement termSelectDiv;
-
+    //Order button below the form
     @FindBy(xpath = "//div[@class=\"Order_Buttons__1xGrp\"]/button[text()=\"Заказать\"]")
     private WebElement orderButton;
-
+    //Confirm order button from modal window
     @FindBy(xpath = "//div[@class=\"Order_Buttons__1xGrp\"]/button[text()=\"Да\"]")
     private WebElement confirmOrderButton;
-
+    //Div containing order confirmation
     @FindBy(xpath = "//div[text()=\"Заказ оформлен\"]")
     private WebElement orderConfirmedDiv;
-
+    //Highlited day in datepicker
     @FindBy(css = "div.react-datepicker__day--selected")
     private WebElement selectedDate;
 

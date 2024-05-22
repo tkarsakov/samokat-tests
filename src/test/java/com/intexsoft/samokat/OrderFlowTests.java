@@ -34,7 +34,7 @@ public class OrderFlowTests extends BaseTest {
     public void testOrderFlowExpectSuccess() {
         MainSamokatPage mainPage = new MainSamokatPage(driver);
         mainPage.clickCookieConfirmButton();
-        OrderPage orderPage = mainPage.clickOrderButton();
+        OrderPage orderPage = mainPage.getSamokatNavBarComponent().clickOrderButton();
         Order order = Order.buildFromJsonString(orderJson.toString());
 
         OrderDetailsPage orderDetailsPage = orderPage
@@ -52,6 +52,6 @@ public class OrderFlowTests extends BaseTest {
                 .clickMakeOrderButton()
                 .clickConfirmOrderButton();
 
-        Assert.assertTrue(orderDetailsPage.isOrderConfirmed());
+        Assert.assertTrue("Assertion failed: order confirmation cannot be located", orderDetailsPage.isOrderConfirmed());
     }
 }

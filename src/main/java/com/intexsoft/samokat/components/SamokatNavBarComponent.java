@@ -16,22 +16,22 @@ import java.time.Duration;
 public class SamokatNavBarComponent {
 
     private final WebDriver driver;
-
+    //Top left main page link
     @FindBy(css = "a[href=\"/\"]")
     private WebElement samokatMainPageLink;
-
+    //Top left dzen link
     @FindBy(css = "a[href=\"//yandex.ru\"]")
     private WebElement yandexLink;
-
-    @FindBy(css = "button.Button_Button__ra12g")
+    //Top right order button
+    @FindBy(css = "div.Header_Nav__AGCXC button.Button_Button__ra12g")
     private WebElement orderButton;
-
+    //Top right order status button
     @FindBy(css = "button.Header_Link__1TAG7")
     private WebElement orderStatusButton;
-
+    //Top right order number input
     @FindBy(css = "input.Header_Input__xIoUq")
     private WebElement orderNumberInput;
-
+    //Top right Go button
     @FindBy(css = "button.Header_Button__28dPO")
     private WebElement goToOrderButton;
 
