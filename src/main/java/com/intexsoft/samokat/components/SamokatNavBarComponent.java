@@ -4,6 +4,7 @@ import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
 import com.intexsoft.samokat.pages.samokat.OrderPage;
 import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
 import com.intexsoft.samokat.pages.yandex.DzenPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,21 +41,25 @@ public class SamokatNavBarComponent {
         this.init(driver);
     }
 
+    @Step("Кликаем на ссылку на главную в навбаре")
     public MainSamokatPage clickMainPageLink() {
         samokatMainPageLink.click();
         return new MainSamokatPage(driver);
     }
 
+    @Step("Кликаем на лого Яндекса")
     public DzenPage clickYandexLink() {
         yandexLink.click();
         return new DzenPage(driver);
     }
 
+    @Step("Кликаем на кнопку 'Заказать'")
     public OrderPage clickOrderButton() {
         orderButton.click();
         return new OrderPage(driver);
     }
 
+    @Step("Кликаем на кнопку 'Статус заказа'")
     public SamokatNavBarComponent clickOrderStatusButton() {
         orderStatusButton.click();
         return this;
@@ -62,8 +67,19 @@ public class SamokatNavBarComponent {
 
     public OrderStatusPage goToOrderByNumber(String orderNumber) {
         clickOrderStatusButton();
+        typeOrderNumber(orderNumber);
+        return clickGoToOrderButton();
+    }
+
+    @Step("Вводим номер заказа в поле ввода")
+    public SamokatNavBarComponent typeOrderNumber(String orderNumber) {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(orderNumberInput));
         orderNumberInput.sendKeys(orderNumber);
+        return this;
+    }
+
+    @Step("Кликаем кнопку 'Go!'")
+    public OrderStatusPage clickGoToOrderButton() {
         goToOrderButton.click();
         return new OrderStatusPage(driver);
     }

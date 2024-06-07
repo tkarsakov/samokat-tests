@@ -23,8 +23,4 @@ public abstract class BaseSamokatPage {
     public void init(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
-    public OrderStatusPage goToOrderByNumber(String number) {
-        return samokatNavBarComponent.goToOrderByNumber(number);
-    }
 }

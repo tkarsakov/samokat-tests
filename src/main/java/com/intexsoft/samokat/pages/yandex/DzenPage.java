@@ -1,5 +1,6 @@
 package com.intexsoft.samokat.pages.yandex;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,7 @@ public class DzenPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Проверяем открыта ли страница Дзен")
     public boolean isPageOpen() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.titleIs("Дзен"));
         return Objects.equals(dzenTitle.getAttribute("innerHTML"), "Дзен");

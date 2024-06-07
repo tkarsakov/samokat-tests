@@ -64,7 +64,7 @@ public class MainPageTests extends BaseTest {
         MainSamokatPage mainPage = new MainSamokatPage(driver);
         String incorrectOrderNumber = ResourcesService.TESTDATA.get("incorrectOrderNumber").toString().replace("\"", "");
 
-        OrderStatusPage orderStatusPage = mainPage.goToOrderByNumber(incorrectOrderNumber);
+        OrderStatusPage orderStatusPage = mainPage.getSamokatNavBarComponent().goToOrderByNumber(incorrectOrderNumber);
         Assert.assertTrue("Failed to verify if the page is opened through orderStatusPage.isPageOpen() (returned false)", orderStatusPage.isPageOpen());
         Assert.assertFalse("Assertion failed: 'not found' section is not present on the page", orderStatusPage.isOrderFound());
     }

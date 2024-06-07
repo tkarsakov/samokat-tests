@@ -1,5 +1,6 @@
 package com.intexsoft.samokat.pages.samokat;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,52 +47,62 @@ public class OrderPage extends BaseSamokatPage {
         super(driver);
     }
 
+    @Step("Вводим имя: {name}")
     public OrderPage typeName(String name) {
         nameInput.sendKeys(name);
         return this;
     }
 
+    @Step("Вводим фамилию: {surname}")
     public OrderPage typeSurname(String surname) {
         surnameInput.sendKeys(surname);
         return this;
     }
 
+    @Step("Вводим адрес: {address}")
     public OrderPage typeAddress(String address) {
         addressInput.sendKeys(address);
         return this;
     }
 
+    @Step("Выбираем метро {subway} из выпадающего меню")
     public OrderPage selectSubway(String subway) {
         subwayInput.click();
         driver.findElement(By.xpath(String.format(SUBWAY_SELECT_DROPDOWN_FORMATTABLE_XPATH, subway))).click();
         return this;
     }
 
+    @Step("Вводим телефонный номер {phoneNumber}")
     public OrderPage typePhoneNumber(String phoneNumber) {
         phoneNumberInput.sendKeys(phoneNumber);
         return this;
     }
 
+    @Step("Кликаем кнопку Далее")
     public OrderDetailsPage clickNextButton() {
         nextButton.click();
         return new OrderDetailsPage(driver);
     }
 
+    @Step("Проверяем присутствует ли ошибка ввода имени")
     public Boolean isNameErrorPresent() {
         orderHeader.click();
         return incorrectNameError.isDisplayed();
     }
 
+    @Step("Проверяем присутствует ли ошибка ввода фамилии")
     public Boolean isSurnameErrorPresent() {
         orderHeader.click();
         return incorrectSurnameError.isDisplayed();
     }
 
+    @Step("Проверяем присутствует ли ошибка ввода адреса")
     public Boolean isAddressErrorPresent() {
         orderHeader.click();
         return incorrectAddressError.isDisplayed();
     }
 
+    @Step("Проверяем присутствует ли ошибка ввода телефонного номера")
     public Boolean isPhoneNumberErrorPresent() {
         orderHeader.click();
         return incorrectPhoneNumberError.isDisplayed();
