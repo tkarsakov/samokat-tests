@@ -1,5 +1,5 @@
 {
   "browserName": "firefox",
-  "selenium_url": "http://172.19.0.2:4444/wd/hub",
+  "selenium_url": "http://172.19.0.3:4444/wd/hub",
   "url": "https://qa-scooter.praktikum-services.ru/"
 }
