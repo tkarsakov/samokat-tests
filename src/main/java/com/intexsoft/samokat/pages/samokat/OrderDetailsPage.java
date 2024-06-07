@@ -1,10 +1,13 @@
 package com.intexsoft.samokat.pages.samokat;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.File;
+import java.io.IOException;
 
 public class OrderDetailsPage extends BaseSamokatPage {
     //Formattable string for locating term options
@@ -64,7 +67,11 @@ public class OrderDetailsPage extends BaseSamokatPage {
 
     @Step("Кликаем кнопку 'Сделать заказ'")
     public OrderDetailsPage clickMakeOrderButton() {
-        getScreenshot();
+        try {
+            File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            Allure.addAttachment("Screenshot", FileUtils.openInputStream(screenshotAs));
+        } catch (IOException ignored) {
+        }
         orderButton.click();
         return this;
     }
