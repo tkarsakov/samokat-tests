@@ -1,6 +1,9 @@
 package com.intexsoft.samokat.pages.samokat;
 
 import com.intexsoft.samokat.components.SamokatNavBarComponent;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,5 +25,10 @@ public abstract class BaseSamokatPage {
 
     public void init(WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    @Attachment
+    protected byte[] getScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

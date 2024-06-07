@@ -64,6 +64,7 @@ public class OrderDetailsPage extends BaseSamokatPage {
 
     @Step("Кликаем кнопку 'Сделать заказ'")
     public OrderDetailsPage clickMakeOrderButton() {
+        getScreenshot();
         orderButton.click();
         return this;
     }
