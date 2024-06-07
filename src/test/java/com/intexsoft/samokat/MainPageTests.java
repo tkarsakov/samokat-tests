@@ -5,6 +5,7 @@ import com.intexsoft.samokat.pages.samokat.MainSamokatPage;
 import com.intexsoft.samokat.pages.samokat.OrderStatusPage;
 import com.intexsoft.samokat.pages.yandex.DzenPage;
 import com.intexsoft.samokat.service.ResourcesService;
+import io.qameta.allure.Description;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Test;
@@ -60,11 +61,12 @@ public class MainPageTests extends BaseTest {
     }
 
     @Test
+    @Description
     public void testIncorrectOrderNumber() {
         MainSamokatPage mainPage = new MainSamokatPage(driver);
         String incorrectOrderNumber = ResourcesService.TESTDATA.get("incorrectOrderNumber").toString().replace("\"", "");
 
-        OrderStatusPage orderStatusPage = mainPage.goToOrderByNumber(incorrectOrderNumber);
+        OrderStatusPage orderStatusPage = mainPage.getSamokatNavBarComponent().goToOrderByNumber(incorrectOrderNumber);
         Assert.assertTrue("Failed to verify if the page is opened through orderStatusPage.isPageOpen() (returned false)", orderStatusPage.isPageOpen());
         Assert.assertFalse("Assertion failed: 'not found' section is not present on the page", orderStatusPage.isOrderFound());
     }

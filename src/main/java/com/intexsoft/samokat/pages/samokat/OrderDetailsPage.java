@@ -1,9 +1,13 @@
 package com.intexsoft.samokat.pages.samokat;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.File;
+import java.io.IOException;
 
 public class OrderDetailsPage extends BaseSamokatPage {
     //Formattable string for locating term options
@@ -31,36 +35,48 @@ public class OrderDetailsPage extends BaseSamokatPage {
         super(driver);
     }
 
+    @Step("Кликаем чекбокс по цвету {scooterColor}")
     public OrderDetailsPage clickScooterColorCheckboxByColor(String scooterColor) {
         driver.findElement(By.id(scooterColor)).click();
         return this;
     }
 
+    @Step("Подтверждаем, что див с подтверждением заказа присутствует")
     public Boolean isOrderConfirmed() {
         return orderConfirmedDiv.isDisplayed();
     }
 
+    @Step("Подтверждаем, что кнопка подтверждения заказа присутствует")
     public Boolean isConfirmButtonDisplayed() {
         return confirmOrderButton.isDisplayed();
     }
 
+    @Step("Вводим дату {date} и кликаем на подсвеченный день в календарике")
     public OrderDetailsPage typeDate(String date) {
         dateInput.sendKeys(date);
         selectedDate.click();
         return this;
     }
 
+    @Step("Выбираем срок аренды {term} в дропдаун меню")
     public OrderDetailsPage selectTermByString(String term) {
         termSelectDiv.click();
         driver.findElement(By.xpath(String.format(SELECTED_TERM_FORMATTABLE_XPATH, term))).click();
         return this;
     }
 
+    @Step("Кликаем кнопку 'Сделать заказ'")
     public OrderDetailsPage clickMakeOrderButton() {
+        try {
+            File screenshotAs = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            Allure.addAttachment("Screenshot", FileUtils.openInputStream(screenshotAs));
+        } catch (IOException ignored) {
+        }
         orderButton.click();
         return this;
     }
 
+    @Step("Кликаем кнопку 'Подтвердить заказ'")
     public OrderDetailsPage clickConfirmOrderButton() {
         confirmOrderButton.click();
         return this;

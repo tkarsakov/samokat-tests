@@ -1,5 +1,6 @@
 package com.intexsoft.samokat.pages.samokat;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,11 +20,13 @@ public class MainSamokatPage extends BaseSamokatPage {
         super(driver);
     }
 
+    @Step("Кликаем кнопку принятия куки")
     public MainSamokatPage clickCookieConfirmButton() {
         cookieConfirmButton.click();
         return this;
     }
 
+    @Step("Получаем текст ответа из вопроса под номером {index} в FAQ блоке")
     public String getAnswerStringByIndex(Integer index) {
         //Add 1 because xpath element lists are not zero indexed
         driver.findElement(By.xpath(String.format(FAQ_LIST_FORMATTABLE_XPATH, index + 1))).click();

@@ -1,5 +1,6 @@
 package com.intexsoft.samokat.pages.samokat;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,10 +17,12 @@ public class OrderStatusPage extends BaseSamokatPage {
         super(driver);
     }
 
+    @Step("Проверяем присутствует ли заказ (отсутствует картинка, что заказ не найден)")
     public Boolean isOrderFound() {
         return !notFoundDiv.isDisplayed();
     }
 
+    @Step("Проверяем открыта ли страница статуса заказа")
     public Boolean isPageOpen() {
         return trackContainerDiv.isDisplayed();
     }
